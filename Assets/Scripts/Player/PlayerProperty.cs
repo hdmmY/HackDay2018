@@ -11,4 +11,12 @@ public class PlayerProperty : MonoBehaviour
     public float HAimSpeed;
 
     public float VAimSpeed;
+
+    public float DetectRadius;
+
+
+    private void OnDrawGizmos ()
+    {
+        Gizmos.DrawWireSphere (transform.position, DetectRadius);
+    }
 }
