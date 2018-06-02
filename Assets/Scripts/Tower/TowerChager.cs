@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using DynamicLight2D;
 
+[ExecuteInEditMode]
 [RequireComponent (typeof (TowerProperty))]
 public class TowerChager : MonoBehaviour
 {
@@ -8,11 +9,31 @@ public class TowerChager : MonoBehaviour
 
     public DynamicLight TowerLight;
 
+    public float ChargeSpeed;
+
+    public void Charge ()
+    {
+        float power = _tower.CurPower + Time.deltaTime * ChargeSpeed;
+        _tower.CurPower = Mathf.Clamp (power, 0, _tower.MaxPower);
+
+        if (_tower.MaxPower < power + 0.01f)
+        {
+            _tower.Running = true;
+        }
+        else
+        {
+            _tower.Running = false;
+        }
+    }
+
     private TowerProperty _tower;
 
     private float _towerRunningTime;
 
-    private readonly float _ChargeFactor = 0.4f;
+    private readonly float _MinSpriteAlpha = 0.2f;
+    private readonly float _SpriteChargeFactor = 0.1f;
+
+    private readonly float _LightChargeFactor = 5f;
 
     private void OnEnable ()
     {
@@ -38,16 +59,16 @@ public class TowerChager : MonoBehaviour
         {
             if (_tower.CurPower == _tower.MaxPower)
             {
-                towerColor.a = Mathf.Clamp01 (_towerRunningTime / 0.2f + +_ChargeFactor);
+                towerColor.a = Mathf.Clamp01 (_MinSpriteAlpha + _towerRunningTime / 1f + _SpriteChargeFactor);
             }
             else
             {
-                towerColor.a = 1.0f * _tower.CurPower / _tower.MaxPower;
+                towerColor.a = Mathf.Clamp (1.0f * _tower.CurPower / _tower.MaxPower, _MinSpriteAlpha, 1f);
             }
         }
         else
         {
-            towerColor.a = _ChargeFactor * 1.0f * _tower.CurPower / _tower.MaxPower;
+            towerColor.a = _MinSpriteAlpha + _SpriteChargeFactor * 1.0f * _tower.CurPower / _tower.MaxPower;
         }
         TowerRenderer.color = towerColor;
 
@@ -56,16 +77,16 @@ public class TowerChager : MonoBehaviour
         {
             if (_tower.CurPower == _tower.MaxPower)
             {
-                TowerLight.Intensity = (_towerRunningTime / 0.2f + _ChargeFactor) * _tower.MaxLightIntensity;
+                TowerLight.LightRadius = Mathf.Clamp01 (_towerRunningTime / 1f + _LightChargeFactor / _tower.MaxLightRadius) * _tower.MaxLightRadius;
             }
             else
             {
-                TowerLight.Intensity = 1.0f * _tower.CurPower / _tower.MaxPower * _tower.MaxLightIntensity;
+                TowerLight.LightRadius = 1.0f * _tower.CurPower / _tower.MaxPower * _tower.MaxLightRadius;
             }
         }
         else
         {
-            towerColor.a = _ChargeFactor * 1.0f * _tower.CurPower / _tower.MaxPower;
+            TowerLight.LightRadius = _LightChargeFactor * 1.0f * _tower.CurPower / _tower.MaxPower;
         }
     }
 }
