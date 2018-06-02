@@ -63,7 +63,7 @@ ENDCG
         Cull Off
         Lighting Off
         ZWrite Off
-        Blend One OneMinusSrcAlpha
+        Blend SrcAlpha OneMinusSrcAlpha
 
         Pass
         {
@@ -84,7 +84,6 @@ ENDCG
             fixed4 frag( v2f IN ) : SV_Target
             {
                 fixed4 c = tex2D( _MainTex, IN.texcoord ) * IN.color;
-                c.rgb *= c.a;
                 return c;
             }
         ENDCG
@@ -111,7 +110,7 @@ ENDCG
             fixed4 frag( v2f IN ) : SV_Target
             {
                 fixed4 c = tex2D( _MainTex, IN.texcoord );
-                return _OccludedColor * c * c.a;
+                return _OccludedColor * c;
             }
         ENDCG
         }

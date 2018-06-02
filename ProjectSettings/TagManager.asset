@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - onlyTrigger
+  - deadTrigger
+  - 2ddl
   layers:
   - Default
   - TransparentFX
@@ -14,6 +16,10 @@ TagManager:
   - UI
   - 
   - 
+  - LightMesh
+  - Background
+  - 
+
   - Tower
   - Player
   - Enemy
