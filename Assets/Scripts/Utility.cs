@@ -18,6 +18,11 @@ public static class Utility
         return ang;
     }
 
+    public static float GetAngleFromDirection (Vector2 dir)
+    {
+        return GetAngleFromTwoPosition (Vector2.zero, dir);
+    }
+
     public static float GetAngleFromTwoPosition (Vector2 fromPos, Vector2 toPos)
     {
         var angle = Vector2.SignedAngle (Vector2.right, toPos - fromPos);

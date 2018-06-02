@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 58728813664938400}
   - component: {fileID: 114457227238278860}
   m_Layer: 9
-  m_Name: Trigger
+  m_Name: ManaPotion Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,9 +56,10 @@ GameObject:
   - component: {fileID: 114498351827556420}
   - component: {fileID: 114525530434335006}
   - component: {fileID: 114389375278632708}
+  - component: {fileID: 114541686037765394}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +132,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1670482160235776
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4735161084096222}
+  - component: {fileID: 58784003597313622}
+  - component: {fileID: 114392736165035342}
+  m_Layer: 9
+  m_Name: Tower Attention Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4114670049543438
 Transform:
   m_ObjectHideFlags: 1
@@ -139,10 +157,10 @@ Transform:
   m_GameObject: {fileID: 1019811836859090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000006, y: 1.0000006, z: 1}
   m_Children: []
   m_Father: {fileID: 4943062407979030}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4218449301995542
 Transform:
@@ -200,6 +218,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4735161084096222
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670482160235776}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4943062407979030}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4756021926670526
 Transform:
   m_ObjectHideFlags: 1
@@ -224,6 +255,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4756021926670526}
+  - {fileID: 4735161084096222}
   - {fileID: 4114670049543438}
   m_Father: {fileID: 4625256610304454}
   m_RootOrder: 0
@@ -346,6 +378,21 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.2}
   serializedVersion: 2
+  m_Radius: 2.22
+--- !u!58 &58784003597313622
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670482160235776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.2}
+  serializedVersion: 2
   m_Radius: 0.5
 --- !u!60 &60003365905861884
 PolygonCollider2D:
@@ -419,7 +466,7 @@ MonoBehaviour:
   intelliderConvex: 1
   recalculateNormals: 0
   flipXYtoXZ: 0
-  debugLines: 0
+  debugLines: 1
   uv_Offset: {x: 0.5, y: 0.5}
   uv_Scale: {x: 0.38, y: 0.38}
   vertexWorking: 0
@@ -438,6 +485,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40a4ee2846e2244eae55e215cf1dc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114392736165035342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670482160235776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a90c8c474f4c6448aca1e9aa49ab9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114457227238278860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -446,7 +504,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1019811836859090}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8bf4f0920e7b44f9ec98dbdca6bbb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a4d48a1194797946b0fea2ef0dfd5aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114498351827556420
@@ -462,8 +520,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HMoveSpeed: 5
   VMoveSpeed: 5
-  HAimSpeed: 0.1
-  VAimSpeed: 0.1
+  AimSpeed: 800
+  NormalShotInterval: 0.2
+  NormalShotSpeed: 10
+  NormalShotDamage: 10
+  MaxManaPoint: 0
+  _curManaPoint: 0
+  DetectRadius: 3
 --- !u!114 &114525530434335006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,6 +538,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0db386539f12f4da03137d25dafa6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114541686037765394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1361529979035312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f05162debefc964c989cd67ab35b0ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerBulletPrefab: {fileID: 114405958271441784, guid: eca0ba42fcfd14141b732fcde1e30503,
+    type: 2}
 --- !u!114 &114973712537579338
 MonoBehaviour:
   m_ObjectHideFlags: 1

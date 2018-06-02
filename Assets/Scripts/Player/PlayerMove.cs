@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
         _rig2D = GetComponent<Rigidbody2D> ();
     }
 
-    private void Update ()
+    private void FixedUpdate ()
     {
         float x = _playerProperty.HMoveSpeed * Input.GetAxis ("Horizontal");
         float y = _playerProperty.VMoveSpeed * Input.GetAxis ("Vertical");
