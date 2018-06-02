@@ -19,6 +19,10 @@ TagManager:
   - LightMesh
   - Background
   - 
+
+  - Tower
+  - Player
+  - Enemy
   - 
   - 
   - 
