@@ -8,6 +8,8 @@ TagManager:
   - deadTrigger
   - 2ddl
   - Tower
+  - Bullet
+  - ManaPotion
   layers:
   - Default
   - TransparentFX

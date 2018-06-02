@@ -8,11 +8,34 @@ public class PlayerProperty : MonoBehaviour
 
     public float VMoveSpeed;
 
-    public float HAimSpeed;
+    public float AimSpeed;
 
-    public float VAimSpeed;
+    [Space]
+
+    public float NormalShotInterval;
+
+    public float NormalShotSpeed;
+
+    public int NormalShotDamage;
+
+    [Space]
+
+    public int MaxManaPoint;
+
+    public int CurManaPoint
+    {
+        get { return _curManaPoint; }
+        set { _curManaPoint = Mathf.Clamp (_curManaPoint + value, 0, MaxManaPoint); }
+    }
+
+    [SerializeField] private int _curManaPoint;
+
+
+    [Space]
 
     public float DetectRadius;
+
+
 
 
     private void OnDrawGizmos ()
