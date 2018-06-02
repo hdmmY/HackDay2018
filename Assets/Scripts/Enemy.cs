@@ -10,8 +10,12 @@ public enum EnemyState
     Numb,
 }
 public class Enemy : Entity {
-    public bool Visible = false;
+    public bool Rest = true;
+    public bool Lighted = false;
+    public Material RestMaterial;
+    public Material ActiveMateiral;
     public StateMachine<EnemyState> StateMachine;
+
     private void Awake()
     {
         StateMachine = StateMachine<EnemyState>.Initialize(this, EnemyState.Idle);
@@ -23,7 +27,14 @@ public class Enemy : Entity {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Rest)
+        {
+            TextureObject.GetComponent<SpriteRenderer>().material = RestMaterial;
+        }
+        else
+        {
+            TextureObject.GetComponent<SpriteRenderer>().material = ActiveMateiral;
+        }
 	}
 
     void Idle_Update()

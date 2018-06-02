@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour {
     public float MoveSpeed = 10;
     public float RotateSpeed = 600;
     public Vector2 LookAt;
+    public GameObject TextureObject;
 
     public virtual void Move(Vector2 dir)
     {
