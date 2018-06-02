@@ -6,14 +6,15 @@ using MonsterLove.StateMachine;
 public enum EnemyState
 {
     Idle,
-    Trace,
+    Chase,
     Numb,
 }
 public class Enemy : Entity {
-
+    public bool Visible = false;
+    public StateMachine<EnemyState> StateMachine;
     private void Awake()
     {
-        StateMachine<EnemyState>.Initialize(this, EnemyState.Idle);
+        StateMachine = StateMachine<EnemyState>.Initialize(this, EnemyState.Idle);
 
     }
     // Use this for initialization
@@ -27,6 +28,17 @@ public class Enemy : Entity {
 
     void Idle_Update()
     {
+        var player = GameSystem.Instance.Player;
+        var dist = (player.transform.position - transform.position).magnitude;
+        if (dist > player.DetectRadius)
+            return;
+        var hits = Physics2D.RaycastAll(transform.position, GameSystem.Instance.Player.transform.position - transform.position, dist, 1 << 8);
+        if (hits.Length < 0)
+            StateMachine.ChangeState(EnemyState.Chase);
+    }
 
+    void Chase_Update()
+    {
+        
     }
 }
