@@ -16,8 +16,8 @@ public class PlayerController : Singleton<PlayerController> {
         {
             var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             var aim = new Vector2(Input.GetAxis("Aim X"), Input.GetAxis("Aim Y")).normalized;
-            Debug.Log(movement);
-            Debug.Log(movement.magnitude);
+            Debug.Log(aim);
+            //Debug.Log(aim.magnitude);
             //var aim = new Vector2()
             PlayerInControl.Move(movement);
             PlayerInControl.Aim(aim);

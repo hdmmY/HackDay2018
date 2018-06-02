@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cfe213f80398641845a5db9ee07a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 5
   RotateSpeed: 600
   LookAt: {x: 0, y: 0}
   TextureObject: {fileID: 0}
