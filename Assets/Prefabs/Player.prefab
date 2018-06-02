@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361529979035312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.06, y: -1.99, z: 0}
+  m_LocalPosition: {x: -3.49, y: -2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4756021926670526}
@@ -331,7 +331,7 @@ MonoBehaviour:
   LightColor: {r: 1, g: 0.8595197, b: 0.5235849, a: 1}
   Intensity: 1.3
   LightMaterial: {fileID: 2100000, guid: 34adb0a8092a83045a49d722c6957dab, type: 2}
-  light2DType: 0
+  light2DType: 1
   SortOrderID: 1
   strokeRender: 0.05
   LightRadius: 1.5
@@ -349,9 +349,9 @@ MonoBehaviour:
   uv_Scale: {x: 0.38, y: 0.38}
   vertexWorking: 0
   RangeAngle: 360
-  staticScene: 1
+  staticScene: 0
   doNotRenderMesh: 0
-  lastLight2DType: 0
+  lastLight2DType: 1
 --- !u!114 &114389375278632708
 MonoBehaviour:
   m_ObjectHideFlags: 1

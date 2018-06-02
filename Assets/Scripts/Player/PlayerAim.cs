@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent (typeof (PlayerProperty))]
 public class PlayerAim : MonoBehaviour

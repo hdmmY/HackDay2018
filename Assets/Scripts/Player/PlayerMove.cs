@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 [RequireComponent (typeof (PlayerProperty))]
 [RequireComponent (typeof (Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
