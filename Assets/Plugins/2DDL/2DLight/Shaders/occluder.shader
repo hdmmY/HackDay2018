@@ -7,7 +7,6 @@ Shader "2D Dynamic Lights/Masks/Occluder"
         [PerRendererData] _MainTex ( "Sprite Texture", 2D ) = "white" {}
         _Color ( "Tint", Color ) = ( 1, 1, 1, 1 )
         [MaterialToggle] PixelSnap ( "Pixel snap", Float ) = 0
-        _AlphaCutoff ( "Alpha Cutoff", Range( 0.01, 1.0 ) ) = 0.1
     }
 
 
@@ -80,8 +79,6 @@ Shader "2D Dynamic Lights/Masks/Occluder"
             {
                 fixed4 c = tex2D( _MainTex, IN.texcoord ) * IN.color;
                 c.rgb *= c.a;
-
-                clip( c.a - _AlphaCutoff );
 
                 return c;
             }
