@@ -2,11 +2,11 @@
 
 public class TowerProperty : MonoBehaviour
 {
-    public int MaxLightIntensity;
+    public float MaxLightRadius;
 
-    public int CurPower;
+    public float CurPower;
 
-    public int MaxPower;
+    public float MaxPower;
 
     public float LightRadius;
 
