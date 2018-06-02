@@ -23,11 +23,10 @@ public class Entity : MonoBehaviour
         if (dir.magnitude == 0)
             return;
 
-        LookAt = dir;
-
         float rowAngle = Utility.GetAngleFromTwoPosition (Vector3.zero, transform.up);
         float angle = Utility.GetAngleFromTwoPosition (Vector3.zero, dir);
-        angle = Mathf.Lerp (angle, rowAngle, 0.7f);
-        transform.rotation = Quaternion.Euler (0, 0, angle - 90f);
+        rowAngle += Mathf.Clamp(Utility.NormalizeAngle(angle - rowAngle), -RotateSpeed * Time.deltaTime, RotateSpeed * Time.deltaTime);
+        LookAt = new Vector2(Mathf.Cos(rowAngle * Mathf.Deg2Rad), Mathf.Sin(rowAngle * Mathf.Deg2Rad));
+        transform.rotation = Quaternion.Euler (0, 0, rowAngle - 90f);
     }
 }

@@ -15,19 +15,38 @@ public class Enemy : Entity {
     public Material RestMaterial;
     public Material ActiveMateiral;
     public StateMachine<EnemyState> StateMachine;
+    public float NumbTime = 1;
+    public float Acceleration = 1;
+    public float MaxSpeed = 5;
+    public float MaxRotateSpeed = 600;
+    public float MinRotateSpeed = 160;
+    float numbTime = 0;
 
     private void Awake()
     {
         StateMachine = StateMachine<EnemyState>.Initialize(this, EnemyState.Idle);
-
+        MoveSpeed = 0;
     }
     // Use this for initialization
     void Start () {
 	}
 
+    public override void Move(Vector2 dir)
+    {
+        if(dir.magnitude>0)
+        {
+            MoveSpeed = Mathf.Clamp(MoveSpeed + Acceleration * Time.deltaTime, 0, MaxSpeed);
+        }
+        else
+        {
+            MoveSpeed = 0;
+        }
+        base.Move(dir);
+    }
     // Update is called once per frame
     void Update()
     {
+        RotateSpeed = -((MaxRotateSpeed - MinRotateSpeed)/MaxSpeed) * MoveSpeed + MaxRotateSpeed;
         if (Rest)
         {
             TextureObject.GetComponent<SpriteRenderer>().material = RestMaterial;
@@ -36,6 +55,17 @@ public class Enemy : Entity {
         {   
             TextureObject.GetComponent<SpriteRenderer>().material = ActiveMateiral;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && StateMachine.State == EnemyState.Chase)
+            StateMachine.ChangeState(EnemyState.Numb);
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && StateMachine.State == EnemyState.Chase)
+            StateMachine.ChangeState(EnemyState.Numb);
     }
 
     void Idle_Update()
@@ -52,7 +82,18 @@ public class Enemy : Entity {
     void Chase_Update()
     {
         var player = GameSystem.Instance.Player;
-        Move(player.transform.position - transform.position);
         Aim(player.transform.position - transform.position);
+        Move(LookAt);
+    }
+
+    void Numb_Enter()
+    {
+        MoveSpeed = 0;
+        numbTime = Time.time;
+    }
+    void Numb_Update()
+    {
+        if (Time.time - numbTime > NumbTime)
+            StateMachine.ChangeState(EnemyState.Idle);
     }
 }

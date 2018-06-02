@@ -13,7 +13,7 @@ public class Player : Entity
 
     void Update()
     {
-        DetectRadius = 1;
+        DetectRadius = Light;
         if(!Moving)
         {
             DetectRadius *= StaticDetect;
