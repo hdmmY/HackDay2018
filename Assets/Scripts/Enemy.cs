@@ -8,6 +8,7 @@ public enum EnemyState
     Idle,
     Chase,
     Numb,
+    Wander,
 }
 public class Enemy : Entity {
     public bool Rest = true;
@@ -95,5 +96,9 @@ public class Enemy : Entity {
     {
         if (Time.time - numbTime > NumbTime)
             StateMachine.ChangeState(EnemyState.Idle);
+    }
+    IEnumerator Wander_Update()
+    {
+
     }
 }
