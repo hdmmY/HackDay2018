@@ -7,6 +7,8 @@ TagManager:
   - onlyTrigger
   - deadTrigger
   - 2ddl
+  - Tower
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -19,13 +21,9 @@ TagManager:
   - LightMesh
   - Background
   - 
-
   - Tower
   - Player
   - Enemy
-  - 
-  - 
-  - 
   - 
   - 
   - 
