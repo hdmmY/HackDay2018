@@ -11,6 +11,12 @@ public class EnemySpanwer : MonoBehaviour
     public List<GameObject> Prefabs = new List<GameObject>();
     public List<float> SpawnWeight = new List<float>();
     public List<GameObject> SpawnedEnemies = new List<GameObject>();
+
+    [Space]
+    public float Health = 500;
+    public GameObject DeadbodyPrefab;
+    public GameObject DeadEffect;
+
     float lastSpawnTime = 0;
     float nextSpawnDuration = 1;
     // Use this for initialization
@@ -45,6 +51,29 @@ public class EnemySpanwer : MonoBehaviour
                 }
                 totalWeight -= SpawnWeight[i];
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            var bullet = collision.GetComponentInParent<BulletProperty>();
+            if (bullet == null) return;
+            Health -= bullet.Damage;
+            bullet.gameObject.SetActive(false);
+            Destroy(bullet.gameObject);
+
+            if(Health <= 0)
+            {
+                if (DeadEffect)
+                    Instantiate(DeadEffect, transform.position, Quaternion.identity);
+                if (DeadbodyPrefab)
+                    Instantiate(DeadbodyPrefab, transform.position, Quaternion.identity);
+                gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
+            
         }
     }
 }

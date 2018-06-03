@@ -35,6 +35,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4924656963533222}
+  - component: {fileID: 50611836312888316}
   - component: {fileID: 114801616912747506}
   m_Layer: 0
   m_Name: EnemySpawner
@@ -100,6 +101,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50611836312888316
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1566941547981974}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 0
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!60 &60821971066756174
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -151,6 +172,10 @@ MonoBehaviour:
   - 1
   - 0.5
   SpawnedEnemies: []
+  Health: 500
+  DeadbodyPrefab: {fileID: 1413977097264374, guid: cfb812dbf378cb84f821f7f5e7b898c9,
+    type: 2}
+  DeadEffect: {fileID: 1389279115752242, guid: 85e1eb758a9c50b4199c194b3d9d4597, type: 2}
 --- !u!212 &212984078085376780
 SpriteRenderer:
   m_ObjectHideFlags: 1
