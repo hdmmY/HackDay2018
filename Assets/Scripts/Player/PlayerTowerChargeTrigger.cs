@@ -8,9 +8,9 @@ public class PlayerTowerChargeTrigger : MonoBehaviour
     bool isCharging = false;
     private void OnTriggerStay2D (Collider2D other)
     {
-        if (other.CompareTag ("Tower"))
+        var tower = other.transform.GetComponentInParent<TowerProperty>();
+        if (tower != null)
         {
-            var tower = other.transform.GetComponentInParent<TowerProperty> ();
             var charger = tower.GetComponent<TowerChager> ();
 
             if (!tower.Running)
