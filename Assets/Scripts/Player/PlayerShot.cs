@@ -31,7 +31,7 @@ public class PlayerShot : MonoBehaviour
             {
                 _shotTimer = 0f;
 
-                Vector3 shotPos = transform.position + transform.up * 0.15f;
+                Vector3 shotPos = transform.position + transform.up * 0.25f;
                 var shotRot = PlayerBulletPrefab.transform.rotation;
 
                 var bullet = Instantiate (PlayerBulletPrefab, shotPos, shotRot);

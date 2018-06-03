@@ -30,7 +30,7 @@ public class TowerChager : MonoBehaviour
 
     private float _towerRunningTime;
 
-    private readonly float _MinSpriteAlpha = 0.2f;
+    private readonly float _MinSpriteAlpha = 0.1f;
     private readonly float _SpriteChargeFactor = 0.1f;
 
     private readonly float _LightChargeFactor = 5f;
