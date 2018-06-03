@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1447215422586396
 GameObject:
   m_ObjectHideFlags: 1
@@ -544,9 +544,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLightRadius: 12.1
-  CurPower: 0
   MaxPower: 100
   Running: 0
+  _curPower: 0
 --- !u!114 &114692082335731968
 MonoBehaviour:
   m_ObjectHideFlags: 1
