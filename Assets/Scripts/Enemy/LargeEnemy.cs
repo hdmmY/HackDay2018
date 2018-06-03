@@ -14,8 +14,11 @@ public class LargeEnemy : Enemy
             var detectRadius = tower.GetComponent<TowerProperty>().LightRadius * 2;
             var dst = (tower.transform.position - transform.position).magnitude;
             return dst < detectRadius;
-        }).OrderBy(tower => (tower.transform.position - transform.position).magnitude).FirstOrDefault();
-        return target;
+        })
+        .OrderBy(t => (t.transform.position - transform.position).magnitude).ToArray();
+        var obj =  target.FirstOrDefault();
+        return obj;
+        //return target;
     }
     public override bool Detect()
     {
