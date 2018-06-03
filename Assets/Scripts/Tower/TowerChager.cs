@@ -14,7 +14,11 @@ public class TowerChager : MonoBehaviour
 
     public void Charge ()
     {
-        float power = _tower.CurPower + Time.deltaTime * ChargeSpeed;
+        var charge = Time.deltaTime * ChargeSpeed;
+        charge = Mathf.Clamp(charge, 0, GameManager.Instance.Player.GetComponent<PlayerProperty>().Power);
+        GameManager.Instance.Player.GetComponent<PlayerProperty>().Power -= charge;
+        float power = _tower.CurPower + charge;
+        
         _tower.CurPower = Mathf.Clamp (power, 0, _tower.MaxPower);
 
         if (_tower.MaxPower < power + 0.01f)

@@ -682,8 +682,8 @@ MonoBehaviour:
   NormalShotInterval: 0.1
   NormalShotSpeed: 12
   NormalShotDamage: 40
-  MaxManaPoint: 0
-  _curManaPoint: 0
+  MaxManaPoint: 1000000
+  CurrentPower: 160
   DetectRadius: 3
 --- !u!114 &114838717667305516
 MonoBehaviour:

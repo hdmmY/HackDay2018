@@ -41,7 +41,7 @@ public class ManaPotionMoveCtrl : MonoBehaviour
     {
         if (other.GetComponent<PlayerColliderBody> ())
         {
-            other.GetComponentInParent<PlayerProperty> ().CurManaPoint += _manaPotion.ManaPoint;
+            other.GetComponentInParent<PlayerProperty> ().Power += _manaPotion.ManaPoint;
             gameObject.SetActive (false);
             Destroy (gameObject);
         }
