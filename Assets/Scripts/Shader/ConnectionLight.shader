@@ -80,9 +80,9 @@
                     float4 c = float4(0, 0, 0, 0);
                     c = Strand(uv,     _Color1.rgb,    79.34,   0.5,    0.1,        0.25,    12.0 * timescale);
                     c += Strand(uv,     _Color2.rgb,    120.34,  1.1,    0.62,       0.08,    3.0 * timescale);
-                    c += Strand(uv,     _Color2.rgb,    380.34,  1.7,    1.5,       0.08,    1.0 * timescale);
-                    c += Strand(uv,     _Color2.rgb,    180.34,  1.4,    1,       0.08,    2.0 * timescale);
-                    c += Strand(uv,     _Color2.rgb,    450.34,  2.0,    0.8,       0.10,    2.0 * timescale);
+                    c += Strand(uv,     _Color3.rgb,    380.34,  1.7,    1.5,       0.08,    1.0 * timescale);
+                    c += Strand(uv,     _Color4.rgb,    180.34,  1.4,    1,       0.08,    2.0 * timescale);
+                    c += Strand(uv,     _Color5.rgb,    450.34,  2.0,    0.8,       0.10,    2.0 * timescale);
                     
 
 					return float4(c.r, c.g, c.b, c.a * _Alpha);

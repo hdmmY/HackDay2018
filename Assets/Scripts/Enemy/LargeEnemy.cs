@@ -43,6 +43,7 @@ public class LargeEnemy : Enemy
         }
         else
         {
+            ConnectManager.Instance.Connect(gameObject, AttackTarget, ConnectManager.Instance.EnemyConnectPrefab);
             Debug.Log("ATTACK");
         }
     }
