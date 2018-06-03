@@ -9,6 +9,8 @@ public enum EnemyState
     Chase,
     Numb,
     Wander,
+    AttackTower,
+    Die,
 }
 public class Enemy : Entity {
     public bool Rest = true;
@@ -23,10 +25,10 @@ public class Enemy : Entity {
     public float MinRotateSpeed = 160;
     public float DetectRadiusMultiple = 2;
     float numbTime = 0;
-    float currentTargetSpeed = 0;
-    float currentDetcetRadiusMultiple = 1;
+    protected float currentTargetSpeed = 0;
+    protected float currentDetcetRadiusMultiple = 1;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         StateMachine = StateMachine<EnemyState>.Initialize(this, EnemyState.Wander);
         MoveSpeed = 0;
@@ -61,7 +63,7 @@ public class Enemy : Entity {
         }
     }
 
-    public bool Detect()
+    public virtual bool Detect()
     {
         var player = GameManager.Instance.Player.GetComponent<PlayerProperty>();
         var dist = (player.transform.position - transform.position).magnitude;
@@ -84,18 +86,18 @@ public class Enemy : Entity {
             StateMachine.ChangeState(EnemyState.Numb);
     }
 
-    void Idle_Update()
+    protected virtual void Idle_Update()
     {
         if (Detect())
             StateMachine.ChangeState(EnemyState.Chase);
     }
-    
-    void Chase_Enter()
+
+    protected void Chase_Enter()
     {
         currentDetcetRadiusMultiple = DetectRadiusMultiple;
     }
 
-    void Chase_Update()
+    protected void Chase_Update()
     {
         var player = GameManager.Instance.Player;
         currentTargetSpeed = MaxSpeed;
@@ -104,12 +106,12 @@ public class Enemy : Entity {
         
     }
 
-    void Numb_Enter()
+    protected void Numb_Enter()
     {
         MoveSpeed = 0;
         numbTime = Time.time;
     }
-    void Numb_Update()
+    protected void Numb_Update()
     {
         if (Time.time - numbTime > NumbTime)
             StateMachine.ChangeState(EnemyState.Idle);
@@ -119,7 +121,6 @@ public class Enemy : Entity {
         while(true)
         {
             var nextChangeTime = Time.time + Random.value * 5 + 1;
-            Debug.Log(nextChangeTime);
             var dir = Random.insideUnitCircle;
             var speed = Random.Range(0, 0.5f);
             if (speed < 0.2)
@@ -134,12 +135,14 @@ public class Enemy : Entity {
         }
     }
     IEnumerator wander;
-    void Wander_Enter()
+    protected void Wander_Enter()
     {
         wander = Wander_Coroutine();
     }
-    void Wander_Update()
+    protected virtual void Wander_Update()
     {
+        if (Detect())
+            StateMachine.ChangeState(EnemyState.Chase);
         wander.MoveNext();
     }
 }
