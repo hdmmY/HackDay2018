@@ -53,7 +53,7 @@ public class Enemy : Entity {
         base.Move(dir);
     }
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
         RotateSpeed = -((MaxRotateSpeed - MinRotateSpeed)/MaxSpeed) * MoveSpeed + MaxRotateSpeed;
         if (Rest)

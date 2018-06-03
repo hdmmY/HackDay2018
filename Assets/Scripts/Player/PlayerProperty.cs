@@ -18,17 +18,19 @@ public class PlayerProperty : MonoBehaviour
 
     public int NormalShotDamage;
 
+    //public float Power = 160;
+
     [Space]
 
-    public int MaxManaPoint;
+    public float MaxManaPoint;
 
-    public int CurManaPoint
+    public float Power
     {
-        get { return _curManaPoint; }
-        set { _curManaPoint = Mathf.Clamp (_curManaPoint + value, 0, MaxManaPoint); }
+        get { return CurrentPower; }
+        set { CurrentPower = Mathf.Clamp (value, 0, MaxManaPoint); }
     }
 
-    [SerializeField] private int _curManaPoint;
+    [SerializeField] public float CurrentPower;
 
 
     [Space]
