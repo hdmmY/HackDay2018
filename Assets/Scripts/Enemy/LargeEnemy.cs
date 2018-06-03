@@ -49,6 +49,7 @@ public class LargeEnemy : Enemy
         {
             Rest = false;
             ConnectManager.Instance.Connect(gameObject, AttackTarget, ConnectManager.Instance.EnemyConnectPrefab);
+            AttackTarget.GetComponent<TowerProperty>().CurPower -= 10 * Time.deltaTime;
         }
     }
     void AttackTower_Exit()
