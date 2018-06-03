@@ -10,13 +10,16 @@ public enum EnemyState
     Numb,
     Wander,
     AttackTower,
-    Die,
+    Dead,
 }
 public class Enemy : Entity {
+    public float Damage = 40;
     public bool Rest = true;
     public bool Lighted = false;
     public Material RestMaterial;
     public Material ActiveMateiral;
+    public GameObject DeadbodyPrefab;
+    public GameObject DeadEffect;
     public StateMachine<EnemyState> StateMachine;
     public float NumbTime = 1;
     public float Acceleration = 1;
@@ -62,7 +65,16 @@ public class Enemy : Entity {
             TextureObject.GetComponent<SpriteRenderer>().material = ActiveMateiral;
         }
     }
-
+    public void ApplyDamage(float damage)
+    {
+        Debug.Log(damage);
+        this.HP -= damage;
+        this.HP = Mathf.Clamp(this.HP, 0, MaxHP);
+        if (HP <= 0)
+        {
+            StateMachine.ChangeState(EnemyState.Dead);
+        }
+    }
     public virtual bool Detect()
     {
         var player = GameManager.Instance.Player.GetComponent<PlayerProperty>();
@@ -79,6 +91,16 @@ public class Enemy : Entity {
     {
         if (collision.gameObject.tag == "Player" && StateMachine.State == EnemyState.Chase)
             StateMachine.ChangeState(EnemyState.Numb);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Bullet")
+        {
+            var bullet = collision.GetComponentInParent<BulletProperty>();
+            ApplyDamage(bullet.Damage);
+            bullet.gameObject.SetActive(false);
+            Destroy(bullet.gameObject);
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -144,5 +166,15 @@ public class Enemy : Entity {
         if (Detect())
             StateMachine.ChangeState(EnemyState.Chase);
         wander.MoveNext();
+    }
+
+    protected virtual void Dead_Enter()
+    {
+        if (DeadEffect)
+            Instantiate(DeadEffect, transform.position, Quaternion.identity);
+        if (DeadbodyPrefab)
+            Instantiate(DeadbodyPrefab, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

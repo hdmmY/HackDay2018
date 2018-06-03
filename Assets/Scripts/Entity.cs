@@ -6,6 +6,8 @@ public class Entity : MonoBehaviour
 {
     public float MoveSpeed = 10;
     public float RotateSpeed = 600;
+    public float HP = 100;
+    public float MaxHP = 100;
     public Vector2 LookAt;
     public GameObject TextureObject;
 
