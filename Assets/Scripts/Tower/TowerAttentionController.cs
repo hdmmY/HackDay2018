@@ -8,6 +8,12 @@ public class TowerAttentionController : MonoBehaviour
     // Degrees per second
     public float RotateSpeed;
 
+    public Color UnRunningColor;
+
+    public Color RuningColor;
+
+
+
     private SpriteRenderer _spriteRenderer;
 
     private TowerProperty _tower;
@@ -19,10 +25,11 @@ public class TowerAttentionController : MonoBehaviour
     }
 
     private void Update ()
-    {
-        _spriteRenderer.enabled = !_tower.Running;
-
+    {        
         transform.Rotate (0, 0, RotateSpeed * Time.deltaTime, Space.Self);
+    
+        // if()
+    
     }
 
 }

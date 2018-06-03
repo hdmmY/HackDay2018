@@ -10,6 +10,7 @@ TagManager:
   - Tower
   - Bullet
   - ManaPotion
+  - Enemy
   layers:
   - Default
   - TransparentFX

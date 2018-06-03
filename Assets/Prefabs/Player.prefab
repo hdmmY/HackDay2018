@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4756021926670526}
   - component: {fileID: 60003365905861884}
+  - component: {fileID: 114255965372485426}
   m_Layer: 9
   m_Name: Collider
   m_TagString: Untagged
@@ -209,7 +210,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1361529979035312}
   m_LocalRotation: {x: 0, y: 0, z: 0.7842089, w: -0.620497}
-  m_LocalPosition: {x: -4.68, y: 3.52, z: 0}
+  m_LocalPosition: {x: 0.33, y: 2.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4943062407979030}
@@ -422,6 +423,17 @@ PolygonCollider2D:
       - {x: 0.0012077689, y: 0.6755782}
       - {x: -0.24842386, y: -0.024499044}
       - {x: 0.0010704398, y: -0.2604516}
+--- !u!114 &114255965372485426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1643473612191172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798c6172e6afdf343923278fe72a3335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114382652523781348
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -466,7 +478,7 @@ MonoBehaviour:
   intelliderConvex: 1
   recalculateNormals: 0
   flipXYtoXZ: 0
-  debugLines: 1
+  debugLines: 0
   uv_Offset: {x: 0.5, y: 0.5}
   uv_Scale: {x: 0.38, y: 0.38}
   vertexWorking: 0
@@ -521,8 +533,8 @@ MonoBehaviour:
   HMoveSpeed: 5
   VMoveSpeed: 5
   AimSpeed: 800
-  NormalShotInterval: 0.2
-  NormalShotSpeed: 10
+  NormalShotInterval: 0.1
+  NormalShotSpeed: 12
   NormalShotDamage: 10
   MaxManaPoint: 0
   _curManaPoint: 0
