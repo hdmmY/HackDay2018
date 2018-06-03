@@ -11,7 +11,7 @@ public class LargeEnemy : Enemy
     {
         var target = GameObject.FindGameObjectsWithTag("Tower").Where((tower) =>
         {
-            var detectRadius = tower.GetComponent<TowerProperty>().LightRadius * 2;
+            var detectRadius = tower.GetComponentInParent<TowerProperty>().LightRadius * 2;
             var dst = (tower.transform.position - transform.position).magnitude;
             return dst < detectRadius;
         })
