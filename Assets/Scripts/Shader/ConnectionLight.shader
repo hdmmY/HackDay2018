@@ -7,7 +7,8 @@
 		_Color3 ("Color3", Color) = (1, 1, 1, 1)
 		_Color4 ("Color4", Color) = (1, 1, 1, 1)
 		_Color5 ("Color5", Color) = (1, 1, 1, 1)
-        
+        _Alpha ("Alpha", Range(0 , 1)) = 1   
+        _ScaleX ("ScaleX", Float) = 1
 	}
 	SubShader
 	{
@@ -47,6 +48,8 @@
                 float4 _Color3;
                 float4 _Color4;
                 float4 _Color5;
+                float _Alpha;
+                float _ScaleX;
 
 				v2f vert(appdata_t i)
 				{
@@ -60,7 +63,7 @@
 
                 float4 Strand(in float2 uv, in float3 color, in float hoffset, in float hscale, in float vscale, in float width, in float timescale)
                 {
-                    float glow =0.04;
+                    float glow = 0.04;
                     float curve = sin(fmod(uv.x * hscale / 100.0 * 1000.0 + _Time.y * timescale + hoffset, UNITY_TWO_PI)) * 0.25 * vscale + 0.5;
                     curve = smoothstep(uv.y - width, uv.y, curve) - smoothstep(uv.y, uv.y + width, curve);
 
@@ -72,22 +75,17 @@
 				{
                     float timescale = 3.0;
                     float2 uv = IN.uv;
+                    uv.x *= _ScaleX;
 
                     float4 c = float4(0, 0, 0, 0);
+                    c = Strand(uv,     _Color1.rgb,    79.34,   0.5,    0.1,        0.25,    12.0 * timescale);
+                    c += Strand(uv,     _Color2.rgb,    120.34,  1.1,    0.62,       0.08,    3.0 * timescale);
+                    c += Strand(uv,     _Color2.rgb,    380.34,  1.7,    1.5,       0.08,    1.0 * timescale);
+                    c += Strand(uv,     _Color2.rgb,    180.34,  1.4,    1,       0.08,    2.0 * timescale);
+                    c += Strand(uv,     _Color2.rgb,    450.34,  2.0,    0.8,       0.10,    2.0 * timescale);
+                    
 
-                    float4 color1 = Strand(uv,     _Color1.rgb,    79.34,  0.5,    0.5,    0.3,    10.0 * timescale);
-                    float4 color2 = Strand(uv,     _Color2.rgb,    64.5,   2.5,    0.2,    0.32,    10.3 * timescale);
-                    float4 color3 = Strand(uv,     _Color3.rgb,    73.5,   2.3,    0.19,   0.315,   8.0 * timescale);
-                    float4 color4 = Strand(uv,     _Color4.rgb,    92.45,  2.6,    0.14,   0.308,   12.0 * timescale);
-                    float4 color5 = Strand(uv,     _Color5.rgb,    72.34,  2.1,    0.13,   0.323,   14.0 * timescale);
-
-                    c = color1;
-                    // c = float4(color2.rgb + (1 - color2.a) * c.rgb, color2.a);
-                    // c = float4(color3.rgb + (1 - color3.a) * c.rgb, color3.a);
-                    // c = float4(color4.rgb + (1 - color4.a) * c.rgb, color4.a);
-                    // c = float4(color5.rgb + (1 - color5.a) * c.rgb, color5.a);
-
-					return float4(c.r, c.g, c.b, 1.0);
+					return float4(c.r, c.g, c.b, c.a * _Alpha);
 				}
 			ENDCG
 		}
