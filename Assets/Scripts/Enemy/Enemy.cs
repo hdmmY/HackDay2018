@@ -108,14 +108,18 @@ public class Enemy : Entity {
             StateMachine.ChangeState(EnemyState.Numb);
     }
 
+
+
     protected virtual void Idle_Update()
     {
+        Rest = true;
         if (Detect())
             StateMachine.ChangeState(EnemyState.Chase);
     }
 
     protected void Chase_Enter()
     {
+        Rest = false;
         currentDetcetRadiusMultiple = DetectRadiusMultiple;
     }
 
