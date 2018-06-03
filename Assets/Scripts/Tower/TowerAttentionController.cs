@@ -23,10 +23,15 @@ public class TowerAttentionController : MonoBehaviour
 
     private float _towerRunningTimer;
 
+    private float _playerLeftTimer;
+
+    private Transform _player;
+
     private void OnEnable ()
     {
         _tower = transform.GetComponentInParent<TowerProperty> ();
         _spriteRenderer = GetComponent<SpriteRenderer> ();
+        _player = GameManager.Instance.Player.transform;
     }
 
     private void Update ()
@@ -49,11 +54,30 @@ public class TowerAttentionController : MonoBehaviour
         {
             _towerRunningTimer += Time.deltaTime;
 
-            _spriteRenderer.color = RuningColor;
+            if ((_player.position - transform.position).magnitude < 7.82f)
+            {
+                _playerLeftTimer = 0f;
+            }
+            else
+            {
+                _playerLeftTimer += Time.deltaTime;
+            }
 
-            float scale = UnRunningRadius + Mathf.Clamp01 (_towerRunningTimer / 1f) * (RunningRadius - UnRunningRadius);
+            float alpha = 0f;
 
-            transform.localScale = new Vector3 (scale, scale, 0f);
+            if (_playerLeftTimer == 0f)
+            {
+                alpha = Mathf.Clamp (_spriteRenderer.color.a + Time.deltaTime, 0, RuningColor.a);
+                _spriteRenderer.color = new Color (RuningColor.r, RuningColor.g, RuningColor.b, alpha);
+                float scale = UnRunningRadius + Mathf.Clamp01 (_towerRunningTimer / 1f) * (RunningRadius - UnRunningRadius);
+                transform.localScale = new Vector3 (scale, scale, 0f);
+            }
+            else
+            {
+                alpha = Mathf.Clamp01 (RuningColor.a - Mathf.Clamp01 (_playerLeftTimer));
+            }
+
+            _spriteRenderer.color = new Color (RuningColor.r, RuningColor.g, RuningColor.b, alpha);
         }
     }
 
