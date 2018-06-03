@@ -29,9 +29,9 @@ public class PlayerTowerChargeTrigger : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Tower"))
+        var tower = collision.transform.GetComponentInParent<TowerProperty>();
+        if (tower != null)
         {
-            var tower = collision.transform.GetComponentInParent<TowerProperty>();
             ConnectManager.Instance.Disconnect(GameManager.Instance.Player, tower.gameObject);
         }
     }

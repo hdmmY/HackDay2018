@@ -249,7 +249,7 @@ MonoBehaviour:
   HP: 100
   MaxHP: 100
   LookAt: {x: 0, y: 0}
-  TextureObject: {fileID: 0}
+  TextureObject: {fileID: 1263038137032924}
   Damage: 40
   Rest: 1
   Lighted: 0

@@ -67,7 +67,6 @@ public class Enemy : Entity {
     }
     public void ApplyDamage(float damage)
     {
-        Debug.Log(damage);
         this.HP -= damage;
         this.HP = Mathf.Clamp(this.HP, 0, MaxHP);
         if (HP <= 0)
@@ -97,6 +96,7 @@ public class Enemy : Entity {
         if(collision.gameObject.tag == "Bullet")
         {
             var bullet = collision.GetComponentInParent<BulletProperty>();
+            if (bullet == null) return;
             ApplyDamage(bullet.Damage);
             bullet.gameObject.SetActive(false);
             Destroy(bullet.gameObject);
