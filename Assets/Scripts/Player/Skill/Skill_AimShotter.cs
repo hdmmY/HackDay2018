@@ -16,6 +16,13 @@ public class Skill_AimShotter : MonoBehaviour
         _player = GetComponent<PlayerProperty>();
         _playerShotter = GetComponent<PlayerShot>();
         _rig2D = GetComponent<Rigidbody2D>();
+
+        _playerShotter.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        _playerShotter.enabled = true;
     }
 
     private void Update ()
@@ -44,7 +51,7 @@ public class Skill_AimShotter : MonoBehaviour
 
     private void Homing (GeneralBulletMoveCtrl moveCtrl)
     {
-        var hitted = Physics2D.CircleCastAll(transform.position, _player.DetectRadius, Vector3.zero, 0, 10);
+        var hitted = Physics2D.CircleCastAll(transform.position, _player.DetectRadius, Vector2.up, 0, 10);
 
         if(hitted != null && hitted.Length != 0)
         {
@@ -52,6 +59,7 @@ public class Skill_AimShotter : MonoBehaviour
             moveCtrl.HomeTarget = hitted[0].transform;
             moveCtrl.HomeAngleSpeed = HomeSpeed;
             moveCtrl.MaxHomeAngle = 10000000;
+            Debug.Log(moveCtrl.HomeTarget.name);
         }
     }
 }
