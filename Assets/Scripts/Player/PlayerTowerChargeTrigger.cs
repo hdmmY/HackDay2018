@@ -5,6 +5,13 @@ using UnityEngine;
 [RequireComponent (typeof (Collider2D))]
 public class PlayerTowerChargeTrigger : MonoBehaviour
 {
+    private PlayerProperty _player;
+
+    private void OnEnable()
+    {
+        _player = GetComponentInParent<PlayerProperty>();
+    }
+
     bool isCharging = false;
     private void OnTriggerStay2D (Collider2D other)
     {
@@ -13,11 +20,11 @@ public class PlayerTowerChargeTrigger : MonoBehaviour
         {
             var charger = tower.GetComponent<TowerChager> ();
 
-            if (!tower.Running)
+            if (!tower.Running || (tower.CurPower != tower.MaxPower && _player.Power > 0))
             {
                 charger.Charge();
                 isCharging = true;
-                ConnectManager.Instance.Connect(GameManager.Instance.Player, tower.gameObject);
+                ConnectManager.Instance.Connect(_player.gameObject, tower.gameObject);
             }
             else if(isCharging)
             {

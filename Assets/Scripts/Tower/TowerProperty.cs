@@ -4,7 +4,11 @@ public class TowerProperty : MonoBehaviour
 {
     public float MaxLightRadius;
 
-    public float CurPower;
+    public float CurPower
+    {
+        get { return _curPower; }
+        set { _curPower = Mathf.Clamp(value, 0, 100000); }
+    }
 
     public float MaxPower;
 
@@ -16,8 +20,9 @@ public class TowerProperty : MonoBehaviour
         }
     }
 
-
     public bool Running;
+
+    [SerializeField] private float _curPower;
 
     private void OnDrawGizmos ()
     {
