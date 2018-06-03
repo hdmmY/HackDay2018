@@ -437,6 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 5
   RotateSpeed: 600
+  HP: 100
+  MaxHP: 100
   LookAt: {x: 0, y: 0}
   TextureObject: {fileID: 0}
   Light: 0
@@ -541,8 +543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2743f75a6ed2789418836099361c063c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HMoveSpeed: 5
-  VMoveSpeed: 5
+  HMoveSpeed: 7
+  VMoveSpeed: 7
   AimSpeed: 800
   NormalShotInterval: 0.2
   NormalShotSpeed: 10

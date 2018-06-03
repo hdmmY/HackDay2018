@@ -114,7 +114,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1566521095523520}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1, y: 3.001, z: 0}
+  m_LocalPosition: {x: 3.0723727, y: 3.7410564, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4784968150161082}
@@ -249,17 +249,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0
   RotateSpeed: 600
+  HP: 100
+  MaxHP: 100
   LookAt: {x: -0.9999895, y: -0.0045803306}
   TextureObject: {fileID: 1246872278827966}
+  Damage: 40
   Rest: 1
   Lighted: 0
   RestMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   ActiveMateiral: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  DeadbodyPrefab: {fileID: 1413977097264374, guid: cfb812dbf378cb84f821f7f5e7b898c9,
+    type: 2}
+  DeadEffect: {fileID: 1389279115752242, guid: 85e1eb758a9c50b4199c194b3d9d4597, type: 2}
   NumbTime: 0.3
   Acceleration: 10
   MaxSpeed: 7
   MaxRotateSpeed: 600
   MinRotateSpeed: 400
+  DetectRadiusMultiple: 2
 --- !u!212 &212096741389215178
 SpriteRenderer:
   m_ObjectHideFlags: 1
