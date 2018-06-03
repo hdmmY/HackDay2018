@@ -47,10 +47,15 @@ public class LargeEnemy : Enemy
         }
     }
 
-    protected override void Wander_Update()
+    public override void Wander_Update()
     {
         base.Wander_Update();
         if (AttackTarget = DetectTower())
             StateMachine.ChangeState(EnemyState.AttackTower);
+    }
+
+    public override void Dead_Enter()
+    {
+        base.Dead_Enter();
     }
 }

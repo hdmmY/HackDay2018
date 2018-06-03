@@ -161,18 +161,18 @@ public class Enemy : Entity {
         }
     }
     IEnumerator wander;
-    protected void Wander_Enter()
+    public void Wander_Enter()
     {
         wander = Wander_Coroutine();
     }
-    protected virtual void Wander_Update()
+    public virtual void Wander_Update()
     {
         if (Detect())
             StateMachine.ChangeState(EnemyState.Chase);
         wander.MoveNext();
     }
 
-    protected virtual void Dead_Enter()
+    public virtual void Dead_Enter()
     {
         if (DeadEffect)
             Instantiate(DeadEffect, transform.position, Quaternion.identity);
