@@ -14,11 +14,17 @@ public class TowerEffect : MonoBehaviour
         {
             ConnectManager.Instance.Connect(GameManager.Instance.Player, gameObject);
             connected = true;
+            ApplyEffect();
         }
         else if(connected)
         {
             connected = false;
             ConnectManager.Instance.Disconnect(GameManager.Instance.Player, gameObject);
         }
+    }
+
+    public virtual void ApplyEffect()
+    {
+
     }
 }
