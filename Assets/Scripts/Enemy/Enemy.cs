@@ -161,7 +161,7 @@ public class Enemy : Entity {
         }
     }
     IEnumerator wander;
-    public void Wander_Enter()
+    public virtual void Wander_Enter()
     {
         wander = Wander_Coroutine();
     }

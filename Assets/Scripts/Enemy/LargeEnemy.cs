@@ -47,7 +47,10 @@ public class LargeEnemy : Enemy
             Debug.Log("ATTACK");
         }
     }
-
+    public override void Wander_Enter()
+    {
+        base.Wander_Enter();
+    }
     public override void Wander_Update()
     {
         base.Wander_Update();
