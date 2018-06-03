@@ -10,6 +10,7 @@ public class TowerChager : MonoBehaviour
     public DynamicLight TowerLight;
 
     public float ChargeSpeed;
+    public bool isCharging = false;
 
     public void Charge ()
     {

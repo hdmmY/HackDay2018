@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerEffect : MonoBehaviour
 {
-
+    bool connected = false;
     // Update is called once per frame
     void Update()
     {
@@ -12,7 +12,13 @@ public class TowerEffect : MonoBehaviour
         var dst = (player.transform.position - transform.position).magnitude;
         if (dst <= GetComponent<TowerProperty>().LightRadius)
         {
-
+            ConnectManager.Instance.Connect(GameManager.Instance.Player, gameObject);
+            connected = true;
+        }
+        else if(connected)
+        {
+            connected = false;
+            ConnectManager.Instance.Disconnect(GameManager.Instance.Player, gameObject);
         }
     }
 }
