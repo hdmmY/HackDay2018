@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 4009597629844472}
   - component: {fileID: 114653798893285520}
   - component: {fileID: 114263128094561944}
+  - component: {fileID: 114361599601378786}
   m_Layer: 0
   m_Name: Tower-Basic
   m_TagString: Untagged
@@ -456,6 +457,7 @@ MonoBehaviour:
   TowerRenderer: {fileID: 212457041033640448}
   TowerLight: {fileID: 114632693453077364}
   ChargeSpeed: 20
+  isCharging: 0
 --- !u!114 &114329112222278566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -465,6 +467,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 801f1941cab095e47bb26623dcc9ce94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114361599601378786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1873607943497196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf2a292a685b1242bbddb836f348133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114632693453077364
