@@ -153,7 +153,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157037485905832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0421045, y: 5.154681, z: 0}
+  m_LocalPosition: {x: 1.9203508, y: 3.7890368, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4157377692859058}
@@ -244,8 +244,8 @@ MonoBehaviour:
   Damage: 40
   Rest: 1
   Lighted: 0
-  RestMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  ActiveMateiral: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  RestMaterial: {fileID: 2100000, guid: afe3f6d9433855640a014b36a701cd7d, type: 2}
+  ActiveMateiral: {fileID: 2100000, guid: 56bbc90748b25a84182b099064e7af4b, type: 2}
   DeadbodyPrefab: {fileID: 1413977097264374, guid: cfb812dbf378cb84f821f7f5e7b898c9,
     type: 2}
   DeadEffect: {fileID: 1389279115752242, guid: 85e1eb758a9c50b4199c194b3d9d4597, type: 2}

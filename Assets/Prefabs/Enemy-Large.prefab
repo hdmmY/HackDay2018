@@ -51,7 +51,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4893478210741558}
   - component: {fileID: 50856083044852502}
-  - component: {fileID: 114925811112977766}
+  - component: {fileID: 114458016949920134}
   m_Layer: 10
   m_Name: Enemy-Large
   m_TagString: Untagged
@@ -233,7 +233,7 @@ PolygonCollider2D:
       - {x: 0.00007557869, y: -0.37761223}
       - {x: 0.32550526, y: -0.1884476}
       - {x: 0.32549858, y: 0.18919635}
---- !u!114 &114925811112977766
+--- !u!114 &114458016949920134
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,29 +241,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 1398398896992660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1cfe213f80398641845a5db9ee07a2e, type: 3}
+  m_Script: {fileID: 11500000, guid: c096f17aedeefaf4ca80432a2cf21899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  RotateSpeed: 160
+  MoveSpeed: 10
+  RotateSpeed: 600
   HP: 100
   MaxHP: 100
   LookAt: {x: 0, y: 0}
-  TextureObject: {fileID: 1263038137032924}
+  TextureObject: {fileID: 0}
   Damage: 40
   Rest: 1
   Lighted: 0
-  RestMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  ActiveMateiral: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  RestMaterial: {fileID: 2100000, guid: afe3f6d9433855640a014b36a701cd7d, type: 2}
+  ActiveMateiral: {fileID: 2100000, guid: 56bbc90748b25a84182b099064e7af4b, type: 2}
   DeadbodyPrefab: {fileID: 1413977097264374, guid: cfb812dbf378cb84f821f7f5e7b898c9,
     type: 2}
   DeadEffect: {fileID: 1389279115752242, guid: 85e1eb758a9c50b4199c194b3d9d4597, type: 2}
   NumbTime: 1
-  Acceleration: 10
+  Acceleration: 1
   MaxSpeed: 4
   MaxRotateSpeed: 600
-  MinRotateSpeed: 100
+  MinRotateSpeed: 160
   DetectRadiusMultiple: 2
+  AttackDistance: 10
+  AttackTarget: {fileID: 0}
 --- !u!212 &212066827688357872
 SpriteRenderer:
   m_ObjectHideFlags: 1
