@@ -15,7 +15,7 @@ public class TowerProperty : MonoBehaviour
             return Running ? CurPower / MaxPower * 7.82f : 0f;
         }
     }
-    
+
 
     public bool Running;
 
