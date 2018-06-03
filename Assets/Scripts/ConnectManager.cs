@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectManager : Singleton<ConnectManager>
+public class ConnectManager : SarSingleton<ConnectManager>
 {
     public GameObject Prefab;
     public GameObject EnemyConnectPrefab;
@@ -50,7 +50,7 @@ public class ConnectManager : Singleton<ConnectManager>
         {
             return;
         }
-        var obj = Instantiate(Prefab);
+        var obj = Instantiate(prefab);
         obj.GetComponent<ConnectEffect>().Begin = start;
         obj.GetComponent<ConnectEffect>().End = end;
         ConnectionMap[keyA][keyB] = obj;

@@ -38,16 +38,22 @@ public class LargeEnemy : Enemy
     void AttackTower_Update()
     {
         var dst = (AttackTarget.transform.position - transform.position).magnitude;
-        if(dst>AttackDistance)
+        if(dst>AttackTarget.GetComponent<TowerProperty>().LightRadius*0.8)
         {
+            Rest = true;
             currentTargetSpeed = MaxSpeed;
             Move(AttackTarget.transform.position - transform.position);
             Aim(AttackTarget.transform.position - transform.position);
         }
         else
         {
+            Rest = false;
             ConnectManager.Instance.Connect(gameObject, AttackTarget, ConnectManager.Instance.EnemyConnectPrefab);
         }
+    }
+    void AttackTower_Exit()
+    {
+        ConnectManager.Instance.Disconnect(gameObject, AttackTarget);
     }
     public override void Wander_Enter()
     {
@@ -55,6 +61,7 @@ public class LargeEnemy : Enemy
     }
     public override void Wander_Update()
     {
+        Rest = true;
         base.Wander_Update();
         if (AttackTarget = DetectTower())
             StateMachine.ChangeState(EnemyState.AttackTower);
@@ -62,6 +69,7 @@ public class LargeEnemy : Enemy
 
     public override void Dead_Enter()
     {
+
         base.Dead_Enter();
     }
 }
