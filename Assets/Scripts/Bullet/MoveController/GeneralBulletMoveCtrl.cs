@@ -68,6 +68,10 @@ public class GeneralBulletMoveCtrl : BaseBulletMoveCtrl
                     _bulletMove.AngleSpeed = angleSpeed;
                 }
             }
+            else
+            {
+                _bulletMove.AngleSpeed = 0f;
+            }
         }
         else
         {

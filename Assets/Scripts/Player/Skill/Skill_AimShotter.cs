@@ -9,6 +9,9 @@ public class Skill_AimShotter : MonoBehaviour
     private PlayerShot _playerShotter;
     private Rigidbody2D _rig2D;
 
+    private CircleCollider2D _trigger;
+    private Detecter _detecter;
+
     private float _shotTimer;
 
     private void OnEnable()
@@ -17,16 +20,27 @@ public class Skill_AimShotter : MonoBehaviour
         _playerShotter = GetComponent<PlayerShot>();
         _rig2D = GetComponent<Rigidbody2D>();
 
+        _trigger = new GameObject("Aim Detecter").AddComponent<CircleCollider2D>();
+        _trigger.transform.parent = transform;
+        _trigger.transform.position = transform.position;
+        _trigger.radius = _player.DetectRadius;
+        _trigger.gameObject.layer = LayerMask.NameToLayer("Background");
+        _trigger.isTrigger = true;
+        _detecter = _trigger.gameObject.AddComponent<Detecter>();
+
         _playerShotter.enabled = false;
     }
 
     private void OnDisable()
     {
         _playerShotter.enabled = true;
+        Destroy(_trigger.gameObject);
     }
 
     private void Update ()
     {
+        _trigger.radius = _player.DetectRadius;
+
         if (Input.GetAxis ("Fire1") < -0.5f)
         {
             _shotTimer += Time.deltaTime;
@@ -51,15 +65,26 @@ public class Skill_AimShotter : MonoBehaviour
 
     private void Homing (GeneralBulletMoveCtrl moveCtrl)
     {
-        var hitted = Physics2D.CircleCastAll(transform.position, _player.DetectRadius, Vector2.up, 0, 10);
-
-        if(hitted != null && hitted.Length != 0)
+        if(_detecter.Target != null)
         {
             moveCtrl.Homing = true;
-            moveCtrl.HomeTarget = hitted[0].transform;
+            moveCtrl.HomeTarget = _detecter.Target;
             moveCtrl.HomeAngleSpeed = HomeSpeed;
             moveCtrl.MaxHomeAngle = 10000000;
             Debug.Log(moveCtrl.HomeTarget.name);
+        }
+    }
+
+    private class Detecter : MonoBehaviour
+    {
+        public Transform Target;
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                Target = other.transform;
+            }
         }
     }
 }

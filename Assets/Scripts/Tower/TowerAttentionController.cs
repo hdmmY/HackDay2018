@@ -69,7 +69,18 @@ public class TowerAttentionController : MonoBehaviour
             {
                 alpha = Mathf.Clamp (_spriteRenderer.color.a + Time.deltaTime, 0, RuningColor.a);
                 _spriteRenderer.color = new Color (RuningColor.r, RuningColor.g, RuningColor.b, alpha);
-                float scale = UnRunningRadius + Mathf.Clamp01 (_towerRunningTimer / 1f) * (RunningRadius - UnRunningRadius);
+
+
+                float scale;
+
+                if(_tower.CurPower == _tower.MaxPower)
+                {
+                    scale = UnRunningRadius + Mathf.Clamp01 (_towerRunningTimer / 1f) * (RunningRadius - UnRunningRadius);
+                }
+                else
+                {
+                    scale = UnRunningRadius + (_tower.CurPower / _tower.MaxPower) * (RunningRadius - UnRunningRadius);
+                }
                 transform.localScale = new Vector3 (scale, scale, 0f);
             }
             else
