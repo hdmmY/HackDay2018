@@ -38,7 +38,7 @@ public class LargeEnemy : Enemy
     void AttackTower_Update()
     {
         var dst = (AttackTarget.transform.position - transform.position).magnitude;
-        if(dst>AttackTarget.GetComponent<TowerProperty>().LightRadius*0.8)
+        if(dst>4)
         {
             Rest = true;
             currentTargetSpeed = MaxSpeed;
