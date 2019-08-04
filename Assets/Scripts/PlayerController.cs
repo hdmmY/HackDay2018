@@ -18,7 +18,9 @@ public class PlayerController : Singleton<PlayerController>
         if (PlayerInControl)
         {
             var movement = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-            var aim = new Vector2 (Input.GetAxis ("Aim X"), Input.GetAxis ("Aim Y")).normalized;
+            var dir = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ScreenToWorldPoint(Input.mousePosition).ToVector2() - PlayerInControl.transform.position.ToVector2();
+            Debug.Log(dir);
+            var aim  = dir;//new Vector2 (Input.GetAxis ("Aim X"), Input.GetAxis ("Aim Y")).normalized;
             if (aim.magnitude == 0)
                 aim = movement;
             PlayerInControl.Move (movement);

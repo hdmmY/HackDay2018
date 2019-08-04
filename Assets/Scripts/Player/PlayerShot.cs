@@ -23,7 +23,7 @@ public class PlayerShot : MonoBehaviour
 
     private void Update ()
     {
-        if (Input.GetAxis ("Fire1") < -0.5f)
+        if (Input.GetKey(KeyCode.Mouse0) || Input.GetAxis("Fire1") > 0.5f)
         {
             _shotTimer += Time.deltaTime;
 
